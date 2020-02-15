@@ -1,0 +1,22 @@
+{
+  "name": "recipebook",
+  "version": "1.0.0",
+  "description": "Recipe Manager",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Aditya Ardiansyah",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "consolidate": "*",
+    "dust": "*",
+    "dustjs-helpers": "*",
+    "dustjs-linkedin": "*",
+    "express": "*",
+    "nodemon": "^2.0.2",
+    "pg": "*"
+  }
+}

@@ -1,0 +1,91 @@
+{>"layout" /}
+{<body}
+<button class="btn btn-success mt-4 btn-block" data-toggle="modal" data-target="#add">Add Recipe</button>
+    {#recipes}
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4>
+                    {name} 
+                    <button class="btn btn-warning float-right" data-toggle="collapse" href="#recipe_{id}" role="button" aria-expanded="false" aria-controls="recipe_{id}">View</button> 
+                </h4>
+                <div class="collapse" id="recipe_{id}">
+                    <hr>
+                    <div class="card card-body">
+                        <p><strong>Ingredients : </strong> <br> {ingredients}</p>
+                        <p><strong>Directions :</strong> <br> {directions}</p>
+                        <button class="btn btn-primary recipes-edit" data-toggle="modal" data-target="#editModal" data-name="{name}" data-id="{id}" data-ingredients="{ingredients}" data-directions="{directions}">Edit</button>
+                        <button class="btn btn-danger mt-2 delete-recipe" data-id="{id}">Hapus</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addLabel">Add Recipe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/add" method="POST">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="">Recipe Name</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Ingredients</label>
+                                <input type="text" name="ingredients" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Directions</label>
+                                <input type="text" name="directions" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" name="add" value="Save" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editLabel">Edit Recipe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/edit" method="POST">
+                        <input type="hidden" name="id" id="edit-id">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="">Recipe Name</label>
+                                <input type="text" name="name" class="form-control" id="edit-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Ingredients</label>
+                                <input type="text" name="ingredients" class="form-control" id="edit-ingredients">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Directions</label>
+                                <input type="text" name="directions" class="form-control" id="edit-directions">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" name="add" value="Save" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {/recipes}
+{/body}
